@@ -167,6 +167,55 @@ footer .sprout{display:inline-block;width:16px;height:16px;vertical-align:-3px;m
 .sticky-cta{display:none;position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom));z-index:40;justify-content:center;transition:transform .3s,opacity .3s}
 .sticky-cta .btn{width:100%;box-shadow:0 10px 30px rgba(0,0,0,.18)}
 .sticky-cta.off{transform:translateY(140%);opacity:0;pointer-events:none}
+
+/* nieuwe pictogrammen */
+.ki{display:block}
+.icon .ki{width:34px;height:34px}
+.ticon .ki{width:26px;height:26px}
+.icon,.ticon{background:#fff}
+.band .icon{background:var(--cream)}
+/* hero art */
+.heroart{position:relative;max-width:340px;margin:0 auto;width:100%}
+.heroart .phone{position:relative;z-index:1}
+.bub{position:absolute;z-index:2;width:76px;height:76px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 14px 34px rgba(20,90,50,.18);animation:float 5s ease-in-out infinite}
+.bub .ki{width:44px;height:44px}
+.bub.b1{left:-34px;top:16%}
+.bub.b2{right:-30px;top:40%;animation-delay:-1.6s;width:66px;height:66px}
+.bub.b3{left:-22px;bottom:14%;animation-delay:-3.1s;width:62px;height:62px}
+.bub.b2 .ki,.bub.b3 .ki{width:36px;height:36px}
+.chip{position:absolute;z-index:2;right:-26px;bottom:7%;display:flex;align-items:center;gap:8px;background:var(--orange);color:#fff;font-weight:900;font-size:18px;padding:8px 16px 8px 8px;border-radius:999px;box-shadow:0 12px 30px rgba(236,138,44,.4);animation:float 4.4s ease-in-out infinite;animation-delay:-.8s}
+.chip i{display:flex;width:34px;height:34px;border-radius:50%;background:#fff}
+.chip .ki{width:24px;height:24px;margin:auto}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+/* straat */
+.street{margin:26px auto 30px;max-width:560px;text-align:center}
+.street svg{width:100%;height:auto;overflow:visible}
+.street figcaption{margin-top:6px;font-weight:900;font-size:20px;color:#F7B267}
+.arc{fill:none;stroke:#EC8A2C;stroke-width:4;stroke-linecap:round;stroke-dasharray:100;stroke-dashoffset:100}
+.street.in .arc{animation:draw .7s ease-out forwards}
+.street.in .arc1{animation-delay:.15s}.street.in .arc2{animation-delay:.3s}.street.in .arc3{animation-delay:.45s}
+@keyframes draw{to{stroke-dashoffset:0}}
+.dr,.dbub{transform-box:fill-box;transform-origin:center}
+.street.in .dr,.street.in .dbub{animation:pop .6s cubic-bezier(.3,1.6,.5,1) both}
+.hs{transform-box:fill-box;transform-origin:50% 100%}
+.street.in .hs{animation:hop .5s ease-out both}
+.street.in .hs0{animation-delay:.75s}.street.in .hs1{animation-delay:.85s}.street.in .hs3{animation-delay:1s}.street.in .hs4{animation-delay:1.15s}
+@keyframes pop{from{transform:scale(0)}}
+@keyframes hop{50%{transform:translateY(-8px) scale(1.06)}}
+/* verschijnen bij scrollen */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.8,.2,1)}
+.reveal.in{opacity:1;transform:none}
+.btn{transition:transform .15s ease,box-shadow .15s ease}
+.btn:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(20,90,50,.18)}
+@media (max-width:760px){
+  .heroart{max-width:250px}
+  .bub{width:58px;height:58px}.bub .ki{width:34px;height:34px}
+  .bub.b2{width:52px;height:52px;right:-22px}.bub.b3{width:50px;height:50px}
+  .bub.b1{left:-24px}
+  .chip{font-size:15px;right:-18px}
+  .street figcaption{font-size:17px}
+}
+@media (prefers-reduced-motion:reduce){.bub,.chip{animation:none}.reveal{opacity:1;transform:none;transition:none}.arc{stroke-dashoffset:0}.street.in *{animation:none!important}}
 </style>
 </head>
 <body>
@@ -202,26 +251,40 @@ footer .sprout{display:inline-block;width:16px;height:16px;vertical-align:-3px;m
           <span data-t="c1">Ladder</span><span data-t="c2">Boormachine</span><span data-t="c3">Hogedrukreiniger</span><span data-t="c4">Partytent</span><span data-t="c5">Grasmaaier</span><span data-t="c6">Raclette</span>
         </div>
       </div>
-      <div class="phone"><img data-src-nl="img/nl_discover.jpg" data-src-fr="img/fr_discover.jpg" data-src-en="img/en_discover.jpg" src="img/nl_discover.jpg" alt="De buurt in de Kwitt-app: spullen van buren in Anderlecht" data-alt="altDiscover"></div>
+      <div class="heroart">
+        <div class="phone"><img data-src-nl="img/nl_discover.jpg" data-src-fr="img/fr_discover.jpg" data-src-en="img/en_discover.jpg" src="img/nl_discover.jpg" alt="De buurt in de Kwitt-app: spullen van buren in Anderlecht" data-alt="altDiscover"></div>
+        <span class="bub b1"><svg class="ki" viewBox="0 0 64 64" fill="none" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7" y="13" width="34" height="17" rx="8.5" stroke="#145A32"/><path d="M41 21.5h9" stroke="#EC8A2C"/><path d="M52 21.5h7" stroke="#145A32" stroke-width="4"/><path d="M17 30l-4 16h13l2-16" stroke="#145A32"/><rect x="10" y="47" width="19" height="9" rx="3.5" fill="#EC8A2C" stroke="#EC8A2C" stroke-width="3"/></svg></span>
+        <span class="bub b2"><svg class="ki" viewBox="0 0 64 64" fill="none" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M23 6L16 58" stroke="#145A32"/><path d="M41 6L48 58" stroke="#145A32"/><path d="M21.3 18h21.4" stroke="#EC8A2C"/><path d="M19.6 31h24.8" stroke="#EC8A2C"/><path d="M17.9 44h28.2" stroke="#EC8A2C"/></svg></span>
+        <span class="bub b3"><svg class="ki" viewBox="0 0 64 64" fill="none" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 55L32 13L58 55Z" stroke="#145A32"/><path d="M24 55l8-15 8 15" stroke="#EC8A2C"/><path d="M32 13V5l8 3-8 3" stroke="#EC8A2C" fill="#EC8A2C" stroke-width="3.5"/></svg></span>
+        <span class="chip"><i><svg class="ki" viewBox="0 0 64 64" fill="none" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="32" cy="32" r="24" stroke="#EC8A2C"/><path d="M26 20v24" stroke="#145A32"/><path d="M38 20L27 32l12 12" stroke="#145A32"/></svg></i><span data-t="heroChip">+2 credits</span></span>
+      </div>
     </div>
   </header>
 
   <section class="band" aria-labelledby="why">
     <div class="wrap">
       <h2 id="why" data-t="whyTitle">Minder kopen. <span class="em">Meer delen.</span></h2>
-      <div class="grid3">
+      <figure class="street reveal" aria-hidden="false">
+        <svg viewBox="0 0 520 170" role="img" aria-labelledby="streetCap">
+          <path class="arc arc0" d="M260 70 Q160.0 10 60 92" pathLength="100"/><path class="arc arc1" d="M260 70 Q210.0 22 160 92" pathLength="100"/><path class="arc arc2" d="M260 70 Q310.0 22 360 92" pathLength="100"/><path class="arc arc3" d="M260 70 Q360.0 10 460 92" pathLength="100"/><g class="hs hs0"><svg x="22" y="88" width="76" height="76" viewBox="0 0 64 64" fill="none" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 30L32 8l26 22" stroke="#FBF6EA"/><path d="M13 25v31h38V25" stroke="#FBF6EA"/><rect x="26" y="38" width="12" height="18" rx="3" fill="#EC8A2C" stroke="#EC8A2C" stroke-width="3"/></svg></g><g class="hs hs1"><svg x="122" y="88" width="76" height="76" viewBox="0 0 64 64" fill="none" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 30L32 8l26 22" stroke="#FBF6EA"/><path d="M13 25v31h38V25" stroke="#FBF6EA"/><rect x="26" y="38" width="12" height="18" rx="3" fill="#EC8A2C" stroke="#EC8A2C" stroke-width="3"/></svg></g><g class="hs hs2"><svg x="222" y="88" width="76" height="76" viewBox="0 0 64 64" fill="none" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 30L32 8l26 22" stroke="#FBF6EA"/><path d="M13 25v31h38V25" stroke="#FBF6EA"/><rect x="26" y="38" width="12" height="18" rx="3" fill="#EC8A2C" stroke="#EC8A2C" stroke-width="3"/></svg></g><g class="hs hs3"><svg x="322" y="88" width="76" height="76" viewBox="0 0 64 64" fill="none" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 30L32 8l26 22" stroke="#FBF6EA"/><path d="M13 25v31h38V25" stroke="#FBF6EA"/><rect x="26" y="38" width="12" height="18" rx="3" fill="#EC8A2C" stroke="#EC8A2C" stroke-width="3"/></svg></g><g class="hs hs4"><svg x="422" y="88" width="76" height="76" viewBox="0 0 64 64" fill="none" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 30L32 8l26 22" stroke="#FBF6EA"/><path d="M13 25v31h38V25" stroke="#FBF6EA"/><rect x="26" y="38" width="12" height="18" rx="3" fill="#EC8A2C" stroke="#EC8A2C" stroke-width="3"/></svg></g>
+          <circle class="dbub" cx="260" cy="42" r="32" fill="#fff"/>
+          <g class="dr"><svg x="238" y="20" width="44" height="44" viewBox="0 0 64 64" fill="none" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="13" width="34" height="17" rx="8.5" stroke="#145A32"/><path d="M41 21.5h9" stroke="#EC8A2C"/><path d="M52 21.5h7" stroke="#145A32" stroke-width="4"/><path d="M17 30l-4 16h13l2-16" stroke="#145A32"/><rect x="10" y="47" width="19" height="9" rx="3.5" fill="#EC8A2C" stroke="#EC8A2C" stroke-width="3"/></svg></g>
+        </svg>
+        <figcaption id="streetCap" data-t="street">Eén boormachine voor de hele straat.</figcaption>
+      </figure>
+      <div class="reveal grid3">
         <div class="card">
-          <div class="icon"><svg class="ph" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M138.54,149.46C106.62,96.25,149.18,43.05,239.63,48.37,245,138.82,191.75,181.39,138.54,149.46ZM16.26,88.26c-3.8,64.61,34.21,95,72.21,72.21C111.27,122.47,80.87,84.46,16.26,88.26Z" class="duo"/><path d="M247.63,47.89a8,8,0,0,0-7.52-7.52c-51.76-3-93.32,12.74-111.18,42.22-11.8,19.48-11.78,43.16-.16,65.74a71.37,71.37,0,0,0-14.17,26.95L98.33,159c7.82-16.33,7.52-33.36-1-47.49C84.09,89.73,53.62,78,15.79,80.27a8,8,0,0,0-7.52,7.52c-2.23,37.83,9.46,68.3,31.25,81.5A45.82,45.82,0,0,0,63.44,176,54.58,54.58,0,0,0,87,170.33l25,25V224a8,8,0,0,0,16,0V194.51a55.61,55.61,0,0,1,12.27-35,73.91,73.91,0,0,0,33.31,8.4,60.9,60.9,0,0,0,31.83-8.86C234.89,141.21,250.67,99.65,247.63,47.89ZM86.06,146.74l-24.41-24.4a8,8,0,0,0-11.31,11.31l24.41,24.41c-9.61,3.18-18.93,2.39-26.94-2.46C32.47,146.31,23.79,124.32,24,96c28.31-.25,50.31,8.47,59.6,23.81C88.45,127.82,89.24,137.14,86.06,146.74Zm111.06-1.36c-13.4,8.11-29.15,8.73-45.15,2l53.69-53.7a8,8,0,0,0-11.31-11.32L140.65,136c-6.76-16-6.15-31.76,2-45.15,13.94-23,47-35.8,89.33-34.83C232.94,98.34,220.14,131.44,197.12,145.38Z"/></svg></div>
+          <div class="icon"><svg class="ki" viewBox="0 0 64 64" fill="none" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M32 58V30" stroke="#145A32"/><path d="M32 40C18 40 11 31 11 19c13 0 21 8 21 21z" stroke="#145A32"/><path d="M32 32C32 19 40 10 54 10c0 14-8 22-22 22z" stroke="#EC8A2C"/></svg></div>
           <h3 data-t="w1t">Niet alles zelf kopen</h3>
           <p data-t="w1p">Veel gereedschap gebruik je een paar keer per jaar. De rest van de tijd ligt het in een kast of een kelder. Leen je het bij een buur, dan hoeft er geen nieuw toestel gekocht en gemaakt te worden.</p>
         </div>
         <div class="card">
-          <div class="icon"><svg class="ph" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M200,152l-40,40L96,176,40,136,72.68,70.63,128,56l55.32,14.63L183.6,72H144L98.34,116.29a8,8,0,0,0,1.38,12.42C117.23,139.9,141,139.13,160,120Z" class="duo"/><path d="M254.3,107.91,228.78,56.85a16,16,0,0,0-21.47-7.15L182.44,62.13,130.05,48.27a8.14,8.14,0,0,0-4.1,0L73.56,62.13,48.69,49.7a16,16,0,0,0-21.47,7.15L1.7,107.9a16,16,0,0,0,7.15,21.47l27,13.51,55.49,39.63a8.06,8.06,0,0,0,2.71,1.25l64,16a8,8,0,0,0,7.6-2.1l55.07-55.08,26.42-13.21a16,16,0,0,0,7.15-21.46Zm-54.89,33.37L165,113.72a8,8,0,0,0-10.68.61C136.51,132.27,116.66,130,104,122L147.24,80h31.81l27.21,54.41ZM41.53,64,62,74.22,36.43,125.27,16,115.06Zm116,119.13L99.42,168.61l-49.2-35.14,28-56L128,64.28l9.8,2.59-45,43.68-.08.09a16,16,0,0,0,2.72,24.81c20.56,13.13,45.37,11,64.91-5L188,152.66Zm62-57.87-25.52-51L214.47,64,240,115.06Zm-87.75,92.67a8,8,0,0,1-7.75,6.06,8.13,8.13,0,0,1-1.95-.24L80.41,213.33a7.89,7.89,0,0,1-2.71-1.25L51.35,193.26a8,8,0,0,1,9.3-13l25.11,17.94L126,208.24A8,8,0,0,1,131.82,217.94Z"/></svg></div>
+          <div class="icon"><svg class="ki" viewBox="0 0 64 64" fill="none" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="22" cy="20" r="8" stroke="#145A32"/><path d="M7 55c0-10 6.5-17 15-17s15 7 15 17" stroke="#145A32"/><circle cx="44" cy="24" r="7" stroke="#EC8A2C"/><path d="M40 40.5c1.3-.3 2.6-.5 4-.5 7.4 0 13 6 13 15" stroke="#EC8A2C"/></svg></div>
           <h3 data-t="w2t">Elkaar helpen</h3>
           <p data-t="w2p">Je leert de mensen in je straat kennen. Wie een ladder komt halen, blijft soms ook even praten. Zo wordt een buurt een beetje meer een buurt.</p>
         </div>
         <div class="card">
-          <div class="icon"><svg class="ph" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M56,88l32,80c0,17.67-20,24-32,24s-32-6.33-32-24ZM200,56l-32,80c0,17.67,20,24,32,24s32-6.33,32-24Z" class="duo"/><path d="M239.43,133l-32-80h0a8,8,0,0,0-9.16-4.84L136,62V40a8,8,0,0,0-16,0V65.58L54.26,80.19A8,8,0,0,0,48.57,85h0v.06L16.57,165a7.92,7.92,0,0,0-.57,3c0,23.31,24.54,32,40,32s40-8.69,40-32a7.92,7.92,0,0,0-.57-3L66.92,93.77,120,82V208H104a8,8,0,0,0,0,16h48a8,8,0,0,0,0-16H136V78.42L187,67.1,160.57,133a7.92,7.92,0,0,0-.57,3c0,23.31,24.54,32,40,32s40-8.69,40-32A7.92,7.92,0,0,0,239.43,133ZM56,184c-7.53,0-22.76-3.61-23.93-14.64L56,109.54l23.93,59.82C78.76,180.39,63.53,184,56,184Zm144-32c-7.53,0-22.76-3.61-23.93-14.64L200,77.54l23.93,59.82C222.76,148.39,207.53,152,200,152Z"/></svg></div>
+          <div class="icon"><svg class="ki" viewBox="0 0 64 64" fill="none" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 30A20 20 0 0 1 47 17" stroke="#EC8A2C"/><path d="M48 6v11H37" stroke="#EC8A2C"/><path d="M51 34A20 20 0 0 1 17 47" stroke="#145A32"/><path d="M16 58V47h11" stroke="#145A32"/></svg></div>
           <h3 data-t="w3t">Eerlijk voor iedereen</h3>
           <p data-t="w3p">Wie uitleent, krijgt credits. Met die credits leen je zelf. Geen geld, geen gedoe: wie geeft, kan ook nemen.</p>
         </div>
@@ -233,7 +296,7 @@ footer .sprout{display:inline-block;width:16px;height:16px;vertical-align:-3px;m
     <div class="wrap">
       <h2 id="how" data-t="howTitle">Zo werkt het</h2>
       <p class="swipehint" data-t="swipe">Veeg opzij voor de volgende stap →</p>
-      <div class="steps">
+      <div class="reveal steps">
         <div class="step">
           <div class="num">1</div>
           <h3 data-t="s1t">Zet 3 spullen in de app</h3>
@@ -253,10 +316,10 @@ footer .sprout{display:inline-block;width:16px;height:16px;vertical-align:-3px;m
           <div class="phone"><img data-src-nl="img/nl_earn.jpg" data-src-fr="img/fr_earn.jpg" data-src-en="img/en_earn.jpg" src="img/nl_earn.jpg" alt="Credits ontvangen na het uitlenen" data-alt="altEarn" loading="lazy"></div>
         </div>
       </div>
-      <div class="trust">
-        <div><span class="ticon"><svg class="ph" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M216,96V208a8,8,0,0,1-8,8H48a8,8,0,0,1-8-8V96a8,8,0,0,1,8-8H208A8,8,0,0,1,216,96Z" class="duo"/><path d="M208,80H176V56a48,48,0,0,0-96,0V80H48A16,16,0,0,0,32,96V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V96A16,16,0,0,0,208,80ZM96,56a32,32,0,0,1,64,0V80H96ZM208,208H48V96H208V208Z"/></svg></span><span data-t="t1">Je adres zie je pas als een lening geaccepteerd is.</span></div>
-        <div><span class="ticon"><svg class="ph" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M208,64H176L160,40H96L80,64H48A16,16,0,0,0,32,80V192a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V80A16,16,0,0,0,208,64ZM128,168a36,36,0,1,1,36-36A36,36,0,0,1,128,168Z" class="duo"/><path d="M208,56H180.28L166.65,35.56A8,8,0,0,0,160,32H96a8,8,0,0,0-6.65,3.56L75.71,56H48A24,24,0,0,0,24,80V192a24,24,0,0,0,24,24H208a24,24,0,0,0,24-24V80A24,24,0,0,0,208,56Zm8,136a8,8,0,0,1-8,8H48a8,8,0,0,1-8-8V80a8,8,0,0,1,8-8H80a8,8,0,0,0,6.66-3.56L100.28,48h55.43l13.63,20.44A8,8,0,0,0,176,72h32a8,8,0,0,1,8,8ZM128,88a44,44,0,1,0,44,44A44.05,44.05,0,0,0,128,88Zm0,72a28,28,0,1,1,28-28A28,28,0,0,1,128,160Z"/></svg></span><span data-t="t2">Een foto bij ophalen en terugbrengen: geen discussie over de staat.</span></div>
-        <div><span class="ticon"><svg class="ph" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M224,128a96,96,0,1,1-96-96A96,96,0,0,1,224,128Z" class="duo"/><path d="M144,176a8,8,0,0,1-8,8,16,16,0,0,1-16-16V128a8,8,0,0,1,0-16,16,16,0,0,1,16,16v40A8,8,0,0,1,144,176Zm88-48A104,104,0,1,1,128,24,104.11,104.11,0,0,1,232,128Zm-16,0a88,88,0,1,0-88,88A88.1,88.1,0,0,0,216,128ZM124,96a12,12,0,1,0-12-12A12,12,0,0,0,124,96Z"/></svg></span><span data-t="t3">Gevaarlijke toestellen? De eigenaar legt uit hoe ze werken.</span></div>
+      <div class="reveal trust">
+        <div><span class="ticon"><svg class="ki" viewBox="0 0 64 64" fill="none" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 28v-7a11 11 0 0 1 22 0v7" stroke="#EC8A2C"/><rect x="11" y="28" width="42" height="28" rx="9" stroke="#145A32"/><path d="M32 39v7" stroke="#EC8A2C"/></svg></span><span data-t="t1">Je adres zie je pas als een lening geaccepteerd is.</span></div>
+        <div><span class="ticon"><svg class="ki" viewBox="0 0 64 64" fill="none" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="20" width="52" height="35" rx="10" stroke="#145A32"/><path d="M22 20l4-8h12l4 8" stroke="#145A32"/><circle cx="32" cy="37.5" r="9.5" stroke="#EC8A2C"/></svg></span><span data-t="t2">Een foto bij ophalen en terugbrengen: geen discussie over de staat.</span></div>
+        <div><span class="ticon"><svg class="ki" viewBox="0 0 64 64" fill="none" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 10h36a8 8 0 0 1 8 8v22a8 8 0 0 1-8 8H30L17 58V48h-3a8 8 0 0 1-8-8V18a8 8 0 0 1 8-8z" stroke="#145A32"/><path d="M32 19v13" stroke="#EC8A2C"/><path d="M32 40v.5" stroke="#EC8A2C"/></svg></span><span data-t="t3">Gevaarlijke toestellen? De eigenaar legt uit hoe ze werken.</span></div>
       </div>
     </div>
   </section>
@@ -267,7 +330,7 @@ footer .sprout{display:inline-block;width:16px;height:16px;vertical-align:-3px;m
         <h2 id="vt" data-t="videoTitle">Kwitt in 30 seconden</h2>
         <p data-t="videoP">Waarom zou iedereen alles zelf kopen? Bekijk hoe lenen bij je buren werkt, en hoe we zo minder nieuwe spullen nodig hebben.</p>
       </div>
-      <div class="player" id="player">
+      <div class="reveal player" id="player">
         <video id="promo" controls playsinline preload="metadata" poster="img/poster_nl_scherm.jpg">
           <source id="promoSrc" src="media/kwitt_nl_scherm.mp4" type="video/mp4">
         </video>
@@ -355,6 +418,7 @@ const FR={
  t1:'Vous ne voyez l’adresse qu’une fois le prêt accepté.',t2:'Une photo au retrait et au retour : pas de discussion sur l’état.',t3:'Appareil dangereux ? Le propriétaire explique comment il fonctionne.',
  videoTitle:'Kwitt en 30 secondes',videoP:'Pourquoi chacun devrait-il tout acheter ? Découvrez comment emprunter à vos voisins, et comment on a ainsi besoin de moins d’objets neufs.',videoAll:'Toutes les vidéos :',vPortrait:'téléphone',vLand:'écran',
  joinTitle:'Rejoignez le test à Anderlecht',joinP:'Nous commençons avec des voisins qui se connaissent, rue par rue. Inscrivez-vous et vous recevrez une invitation dès que votre quartier démarre. Gratuit et sans engagement.',
+ heroChip:'+2 crédits',street:'Une perceuse pour toute la rue.',
  swipe:'Glissez pour l’étape suivante →',
  fOtherCity:'J’habite dans une autre commune',fBackHood:'J’habite à Anderlecht',fCity:'Commune',fCityNote:'Nous commençons à Anderlecht. Inscrivez-vous quand même : dès qu’il y a assez de voisins dans votre commune, nous y ouvrons Kwitt aussi.',badCity:'Indiquez votre commune.',
  fName:'Prénom',fEmail:'Adresse e-mail',fHood:'Quartier',fOther:'Autre quartier',fSubmit:'Je m’inscris',
@@ -388,6 +452,7 @@ const EN={
  t1:'You only see the address once the loan is accepted.',t2:'A photo at pickup and return: no arguments about the condition.',t3:'Risky device? The owner explains how it works.',
  videoTitle:'Kwitt in 30 seconds',videoP:'Why should everyone buy everything? See how borrowing from your neighbours works, and how it means we need fewer new things.',videoAll:'All videos:',vPortrait:'phone',vLand:'screen',
  joinTitle:'Join the test in Anderlecht',joinP:'We start with neighbours who know each other, street by street. Sign up and you will get an invitation as soon as your neighbourhood starts. Free, no strings attached.',
+ heroChip:'+2 credits',street:'One drill for the whole street.',
  swipe:'Swipe for the next step →',
  fOtherCity:'I live in another municipality',fBackHood:'I live in Anderlecht',fCity:'Municipality',fCityNote:'We are starting in Anderlecht. Sign up anyway: as soon as there are enough neighbours in your municipality, we will open Kwitt there too.',badCity:'Please enter your municipality.',
  fName:'First name',fEmail:'Email address',fHood:'Neighbourhood',fOther:'Other neighbourhood',fSubmit:'Sign me up',
@@ -404,7 +469,7 @@ const EN={
  ok:'Thank you! You are signed up. We will let you know as soon as your neighbourhood starts.',dup:'This email address is already signed up.',bad:'Please check your first name and email address.',fail:'Signing up didn’t work. Please try again later.',
  title:'Kwitt · Borrow from your neighbours'
 };
-const NL_EXTRA={fBackHood:'Ik woon in Anderlecht',badCity:'Vul je gemeente in.',videoAll:'Alle video\'s:',vPortrait:'telefoon',vLand:'scherm',ok:'Bedankt! Je bent ingeschreven. We laten je weten zodra jouw wijk start.',dup:'Dit e-mailadres is al ingeschreven.',bad:'Kijk je voornaam en e-mailadres na.',fail:'Inschrijven lukte niet. Probeer het later opnieuw.',title:document.title};
+const NL_EXTRA={heroChip:'+2 credits',fBackHood:'Ik woon in Anderlecht',badCity:'Vul je gemeente in.',videoAll:'Alle video\'s:',vPortrait:'telefoon',vLand:'scherm',ok:'Bedankt! Je bent ingeschreven. We laten je weten zodra jouw wijk start.',dup:'Dit e-mailadres is al ingeschreven.',bad:'Kijk je voornaam en e-mailadres na.',fail:'Inschrijven lukte niet. Probeer het later opnieuw.',title:document.title};
 
 // Nederlandse teksten bewaren zoals ze in de HTML staan.
 const NL={};
@@ -446,6 +511,10 @@ document.querySelectorAll('.lang button').forEach(b=>b.addEventListener('click',
 let start='nl';
 try{const nav=(navigator.language||'').toLowerCase();start=localStorage.getItem('kwitt.lang')||(nav.startsWith('fr')?'fr':nav.startsWith('en')?'en':'nl')}catch(e){}
 setLang(start);
+
+// Verschijnen bij scrollen
+(function(){const els=document.querySelectorAll('.reveal');if(!('IntersectionObserver' in window)){els.forEach(e=>e.classList.add('in'));return}
+ const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.2});els.forEach(e=>io.observe(e))})();
 
 // Telefoon: vaste knop onderaan, verborgen bij de hero en het formulier
 (function(){const cta=document.getElementById('stickyCta'),hero=document.querySelector('.hero'),join=document.getElementById('join');
