@@ -112,6 +112,20 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
   section{padding:56px 0}
 }
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+/* subtle leaves */
+.hero{position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;right:-30px;bottom:-20px;width:220px;height:290px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 160' fill='none' stroke='%23145A32' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M60 158C60 120 58 80 70 30'/%3E%3Cpath d='M62 112C40 112 22 98 18 76c22 0 40 12 44 36z'/%3E%3Cpath d='M64 84c18-4 34-18 36-40-20 2-34 18-36 40z'/%3E%3Cpath d='M68 46C58 36 56 20 62 6c10 10 12 26 6 40z'/%3E%3C/svg%3E") no-repeat center/contain;opacity:.09;transform:rotate(-12deg);pointer-events:none}
+.hero::after{content:"";position:absolute;left:-40px;top:30px;width:110px;height:150px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 160' fill='none' stroke='%23145A32' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M60 158C60 120 58 80 70 30'/%3E%3Cpath d='M62 112C40 112 22 98 18 76c22 0 40 12 44 36z'/%3E%3Cpath d='M64 84c18-4 34-18 36-40-20 2-34 18-36 40z'/%3E%3Cpath d='M68 46C58 36 56 20 62 6c10 10 12 26 6 40z'/%3E%3C/svg%3E") no-repeat center/contain;opacity:.06;transform:rotate(24deg) scaleX(-1);pointer-events:none}
+.hero .wrap{position:relative;z-index:1}
+.band{position:relative;overflow:hidden}
+.band::after{content:"";position:absolute;right:2%;top:-30px;width:200px;height:260px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 160' fill='none' stroke='%23FBF6EA' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M60 158C60 120 58 80 70 30'/%3E%3Cpath d='M62 112C40 112 22 98 18 76c22 0 40 12 44 36z'/%3E%3Cpath d='M64 84c18-4 34-18 36-40-20 2-34 18-36 40z'/%3E%3Cpath d='M68 46C58 36 56 20 62 6c10 10 12 26 6 40z'/%3E%3C/svg%3E") no-repeat center/contain;opacity:.08;transform:rotate(18deg);pointer-events:none}
+.band .wrap{position:relative;z-index:1}
+#why::after{content:"";display:inline-block;width:.6em;height:.6em;margin-left:.2em;vertical-align:.02em;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2398C379'%3E%3Cpath d='M20 3C10 3 4 8 4 15c0 2 .6 3.6 1.4 4.8L3.5 21.7l1.1 1.1 2-2C7.8 21.5 9.2 22 11 22c7 0 10-7 9-19zM8 18c2-4 5-7 9-9-3 3-5.5 6-7.4 9.6z'/%3E%3C/svg%3E") no-repeat center/contain}
+.join{position:relative;overflow:hidden}
+.join::before{content:"";position:absolute;left:-26px;bottom:-26px;width:150px;height:200px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 160' fill='none' stroke='%23145A32' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M60 158C60 120 58 80 70 30'/%3E%3Cpath d='M62 112C40 112 22 98 18 76c22 0 40 12 44 36z'/%3E%3Cpath d='M64 84c18-4 34-18 36-40-20 2-34 18-36 40z'/%3E%3Cpath d='M68 46C58 36 56 20 62 6c10 10 12 26 6 40z'/%3E%3C/svg%3E") no-repeat center/contain;opacity:.07;transform:rotate(14deg);pointer-events:none}
+.join .wrap{position:relative;z-index:1}
+footer .sprout{display:inline-block;width:16px;height:16px;vertical-align:-3px;margin-right:6px;color:#7FB069}
 </style>
 </head>
 <body>
@@ -258,7 +272,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
 
 <footer>
   <div class="wrap">
-    <span>© 2026 Kwitt · Anderlecht</span>
+    <span><svg class="sprout" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21v-9"/><path d="M12 12C12 8 9 5 4 5c0 4 3 7 8 7z"/><path d="M12 14c0-4 3-7 8-7 0 4-3 7-8 7z"/></svg>© 2026 Kwitt · Anderlecht</span>
     <span data-t="footer">Leen. Deel. Sta quitte.</span>
     <a href="privacy.html" data-t="privacyLink">Privacyverklaring</a>
   </div>
