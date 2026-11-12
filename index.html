@@ -7,7 +7,7 @@
 <meta name="description" content="Leen een ladder, boormachine of partytent bij je buren in plaats van hem te kopen. Leen zelf uit en verdien credits. Test in Anderlecht.">
 <meta property="og:title" content="Kwitt · Samen hebben we alles al">
 <meta property="og:description" content="Leen bij je buren in plaats van te kopen. Test in Anderlecht.">
-<meta property="og:image" content="img/poster_nl.jpg">
+<meta property="og:image" content="img/poster_nl_scherm.jpg">
 <link rel="icon" href="favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -80,8 +80,6 @@ section{padding:72px 0}
 .num{width:36px;height:36px;border-radius:50%;background:var(--orange);color:#2A1503;font-weight:900;display:flex;align-items:center;justify-content:center}
 .trust{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:28px}
 .trust div{display:flex;gap:12px;align-items:flex-start;background:var(--sand);border-radius:18px;padding:18px;font-weight:700}
-.video .wrap{display:grid;grid-template-columns:.8fr 1.2fr;gap:48px;align-items:center}
-.video .phone{max-width:320px}
 .hoods{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
 .hoods span{background:var(--sand);border-radius:999px;padding:6px 14px;font-weight:800;font-size:15px;color:var(--green)}
 
@@ -105,7 +103,7 @@ footer{padding:36px 0 48px;border-top:1px solid var(--line);color:var(--muted);f
 footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
 
 @media (max-width:860px){
-  .hero .wrap,.video .wrap,.join .wrap{grid-template-columns:1fr}
+  .hero .wrap,.join .wrap{grid-template-columns:1fr}
   .grid3,.steps,.trust{grid-template-columns:1fr}
   .hero{padding-top:32px}
   .navr .btn{display:none}
@@ -126,6 +124,16 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
 .join::before{content:"";position:absolute;left:-26px;bottom:-26px;width:150px;height:200px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 160' fill='none' stroke='%23145A32' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M60 158C60 120 58 80 70 30'/%3E%3Cpath d='M62 112C40 112 22 98 18 76c22 0 40 12 44 36z'/%3E%3Cpath d='M64 84c18-4 34-18 36-40-20 2-34 18-36 40z'/%3E%3Cpath d='M68 46C58 36 56 20 62 6c10 10 12 26 6 40z'/%3E%3C/svg%3E") no-repeat center/contain;opacity:.07;transform:rotate(14deg);pointer-events:none}
 .join .wrap{position:relative;z-index:1}
 footer .sprout{display:inline-block;width:16px;height:16px;vertical-align:-3px;margin-right:6px;color:#7FB069}
+
+.video .wrap{display:flex;flex-direction:column;gap:22px;align-items:stretch}
+.video .vtext{max-width:720px}
+.player{width:100%;max-width:960px;margin:0 auto;border-radius:22px;overflow:hidden;background:#000;box-shadow:0 30px 70px rgba(20,90,50,.22);aspect-ratio:16/9}
+.player video{width:100%;height:100%;display:block;object-fit:contain;background:#000}
+.player.p{max-width:330px;aspect-ratio:1170/2532;border:9px solid var(--ink);border-radius:44px}
+.vlist{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:center}
+.vbtns{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
+.vbtns button{font:inherit;font-weight:800;font-size:14px;padding:8px 14px;border-radius:999px;border:1.5px solid var(--green);background:transparent;color:var(--green);cursor:pointer}
+.vbtns button[aria-pressed=true]{background:var(--green);color:var(--cream)}
 </style>
 </head>
 <body>
@@ -137,9 +145,10 @@ footer .sprout{display:inline-block;width:16px;height:16px;vertical-align:-3px;m
       kwitt
     </a>
     <div class="navr">
-      <div class="lang" role="group" aria-label="Taal / Langue">
+      <div class="lang" role="group" aria-label="Taal / Langue / Language">
         <button type="button" data-lang="nl" aria-pressed="true">NL</button>
         <button type="button" data-lang="fr" aria-pressed="false">FR</button>
+        <button type="button" data-lang="en" aria-pressed="false">EN</button>
       </div>
       <a class="btn small orange" href="#join" data-t="navCta">Doe mee</a>
     </div>
@@ -160,7 +169,7 @@ footer .sprout{display:inline-block;width:16px;height:16px;vertical-align:-3px;m
           <span data-t="c1">Ladder</span><span data-t="c2">Boormachine</span><span data-t="c3">Hogedrukreiniger</span><span data-t="c4">Partytent</span><span data-t="c5">Grasmaaier</span><span data-t="c6">Raclette</span>
         </div>
       </div>
-      <div class="phone"><img data-src-nl="img/nl_discover.jpg" data-src-fr="img/fr_discover.jpg" src="img/nl_discover.jpg" alt="De buurt in de Kwitt-app: spullen van buren in Anderlecht" data-alt="altDiscover"></div>
+      <div class="phone"><img data-src-nl="img/nl_discover.jpg" data-src-fr="img/fr_discover.jpg" data-src-en="img/en_discover.jpg" src="img/nl_discover.jpg" alt="De buurt in de Kwitt-app: spullen van buren in Anderlecht" data-alt="altDiscover"></div>
     </div>
   </header>
 
@@ -195,19 +204,19 @@ footer .sprout{display:inline-block;width:16px;height:16px;vertical-align:-3px;m
           <div class="num">1</div>
           <h3 data-t="s1t">Zet 3 spullen in de app</h3>
           <p data-t="s1p">Neem een foto van wat je wilt uitlenen. Je krijgt 3 startcredits.</p>
-          <div class="phone"><img data-src-nl="img/nl_add.jpg" data-src-fr="img/fr_add.jpg" src="img/nl_add.jpg" alt="Een voorwerp toevoegen met foto" data-alt="altAdd" loading="lazy"></div>
+          <div class="phone"><img data-src-nl="img/nl_add.jpg" data-src-fr="img/fr_add.jpg" data-src-en="img/en_add.jpg" src="img/nl_add.jpg" alt="Een voorwerp toevoegen met foto" data-alt="altAdd" loading="lazy"></div>
         </div>
         <div class="step">
           <div class="num">2</div>
           <h3 data-t="s2t">Leen iets in de buurt</h3>
           <p data-t="s2p">Zoek wat je nodig hebt en vraag het te leen. Je betaalt met credits.</p>
-          <div class="phone"><img data-src-nl="img/nl_detail.jpg" data-src-fr="img/fr_detail.jpg" src="img/nl_detail.jpg" alt="Een boormachine te leen vragen" data-alt="altDetail" loading="lazy"></div>
+          <div class="phone"><img data-src-nl="img/nl_detail.jpg" data-src-fr="img/fr_detail.jpg" data-src-en="img/en_detail.jpg" src="img/nl_detail.jpg" alt="Een boormachine te leen vragen" data-alt="altDetail" loading="lazy"></div>
         </div>
         <div class="step">
           <div class="num">3</div>
           <h3 data-t="s3t">Leen uit en verdien credits</h3>
           <p data-t="s3p">Een buur leent iets van jou? Na het terugbrengen krijg je de credits.</p>
-          <div class="phone"><img data-src-nl="img/nl_earn.jpg" data-src-fr="img/fr_earn.jpg" src="img/nl_earn.jpg" alt="Credits ontvangen na het uitlenen" data-alt="altEarn" loading="lazy"></div>
+          <div class="phone"><img data-src-nl="img/nl_earn.jpg" data-src-fr="img/fr_earn.jpg" data-src-en="img/en_earn.jpg" src="img/nl_earn.jpg" alt="Credits ontvangen na het uitlenen" data-alt="altEarn" loading="lazy"></div>
         </div>
       </div>
       <div class="trust">
@@ -220,15 +229,18 @@ footer .sprout{display:inline-block;width:16px;height:16px;vertical-align:-3px;m
 
   <section class="video" id="video" aria-labelledby="vt" style="background:var(--sand)">
     <div class="wrap">
-      <div class="phone">
-        <video id="promo" controls playsinline preload="metadata" poster="img/poster_nl.jpg">
-          <source id="promoSrc" src="media/kwitt_nl.mp4" type="video/mp4">
+      <div class="vtext">
+        <h2 id="vt" data-t="videoTitle">Kwitt in 30 seconden</h2>
+        <p data-t="videoP">Waarom zou iedereen alles zelf kopen? Bekijk hoe lenen bij je buren werkt, en hoe we zo minder nieuwe spullen nodig hebben.</p>
+      </div>
+      <div class="player" id="player">
+        <video id="promo" controls playsinline preload="metadata" poster="img/poster_nl_scherm.jpg">
+          <source id="promoSrc" src="media/kwitt_nl_scherm.mp4" type="video/mp4">
         </video>
       </div>
-      <div style="display:grid;gap:16px">
-        <h2 id="vt" data-t="videoTitle">Kwitt in 30 seconden</h2>
-        <p data-t="videoP">Bekijk hoe lenen bij je buren werkt, van een foto van je eigen spullen tot de credits die je verdient.</p>
-        <p class="muted small" data-t="videoNote">De video speelt in het Nederlands of het Frans, volgens de taal van deze pagina.</p>
+      <div class="vlist">
+        <span class="muted small" data-t="videoAll">Alle video's:</span>
+        <div class="vbtns" id="vbtns"></div>
       </div>
     </div>
   </section>
@@ -300,7 +312,7 @@ const FR={
  s2t:'Empruntez dans le quartier',s2p:'Cherchez ce dont vous avez besoin et demandez à l’emprunter. Vous payez en crédits.',
  s3t:'Prêtez et gagnez des crédits',s3p:'Un voisin vous emprunte quelque chose ? Au retour, vous recevez les crédits.',
  t1:'Vous ne voyez l’adresse qu’une fois le prêt accepté.',t2:'Une photo au retrait et au retour : pas de discussion sur l’état.',t3:'Appareil dangereux ? Le propriétaire explique comment il fonctionne.',
- videoTitle:'Kwitt en 30 secondes',videoP:'Découvrez comment emprunter à vos voisins, de la photo de vos objets jusqu’aux crédits que vous gagnez.',videoNote:'La vidéo est en français ou en néerlandais, selon la langue de cette page.',
+ videoTitle:'Kwitt en 30 secondes',videoP:'Pourquoi chacun devrait-il tout acheter ? Découvrez comment emprunter à vos voisins, et comment on a ainsi besoin de moins d’objets neufs.',videoAll:'Toutes les vidéos :',vPortrait:'téléphone',vLand:'écran',
  joinTitle:'Rejoignez le test à Anderlecht',joinP:'Nous commençons avec des voisins qui se connaissent, rue par rue. Inscrivez-vous et vous recevrez une invitation dès que votre quartier démarre. Gratuit et sans engagement.',
  fName:'Prénom',fEmail:'Adresse e-mail',fHood:'Quartier',fOther:'Autre quartier',fSubmit:'Je m’inscris',
  fPrivacy:'Nous utilisons votre adresse e-mail uniquement pour vous inviter au test. Vous pouvez toujours demander de l’effacer.',
@@ -316,7 +328,38 @@ const FR={
  ok:'Merci ! Vous êtes inscrit. Nous vous écrivons dès que votre quartier démarre.',dup:'Cette adresse e-mail est déjà inscrite.',bad:'Vérifiez votre prénom et votre adresse e-mail.',fail:'L’inscription n’a pas fonctionné. Réessayez plus tard.',
  title:'Kwitt · Empruntez à vos voisins'
 };
-const NL_EXTRA={ok:'Bedankt! Je bent ingeschreven. We laten je weten zodra jouw wijk start.',dup:'Dit e-mailadres is al ingeschreven.',bad:'Kijk je voornaam en e-mailadres na.',fail:'Inschrijven lukte niet. Probeer het later opnieuw.',title:document.title};
+const EN={
+ navCta:'Join',
+ heroTitle:'Together, we <span class="em">already have it all</span>.',
+ heroLead:'Borrow a ladder, a drill or a party tent from your neighbours instead of buying one. Lend your own things and earn credits.',
+ heroCta:'Join the test in Anderlecht',heroVideo:'Watch the video',
+ c1:'Ladder',c2:'Drill',c3:'Pressure washer',c4:'Party tent',c5:'Lawnmower',c6:'Raclette',
+ whyTitle:'Buy less. <span class="em">Share more.</span>',
+ w1t:'Don’t buy everything yourself',w1p:'Many tools get used a few times a year. The rest of the time they sit in a cupboard or a cellar. Borrow one from a neighbour, and no new device needs to be bought or made.',
+ w2t:'Help each other',w2p:'You get to know the people on your street. Whoever comes to pick up a ladder sometimes stays for a chat. A neighbourhood becomes a bit more of a neighbourhood.',
+ w3t:'Fair for everyone',w3p:'Lend something and you earn credits. Use those credits to borrow yourself. No money, no hassle: whoever gives can also take.',
+ howTitle:'How it works',
+ s1t:'Add 3 things to the app',s1p:'Take photos of what you want to lend. You get 3 starting credits.',
+ s2t:'Borrow in your neighbourhood',s2p:'Search for what you need and ask to borrow it. You pay in credits.',
+ s3t:'Lend and earn credits',s3p:'A neighbour borrows something from you? When it comes back, you get the credits.',
+ t1:'You only see the address once the loan is accepted.',t2:'A photo at pickup and return: no arguments about the condition.',t3:'Risky device? The owner explains how it works.',
+ videoTitle:'Kwitt in 30 seconds',videoP:'Why should everyone buy everything? See how borrowing from your neighbours works, and how it means we need fewer new things.',videoAll:'All videos:',vPortrait:'phone',vLand:'screen',
+ joinTitle:'Join the test in Anderlecht',joinP:'We start with neighbours who know each other, street by street. Sign up and you will get an invitation as soon as your neighbourhood starts. Free, no strings attached.',
+ fName:'First name',fEmail:'Email address',fHood:'Neighbourhood',fOther:'Other neighbourhood',fSubmit:'Sign me up',
+ fPrivacy:'We only use your email address to invite you to the test. You can always ask us to delete it.',
+ faqTitle:'Questions',
+ q1:'Does it cost anything?',a1:'No. Kwitt is free during the test. You don’t pay with money, but with credits you earn by lending things yourself.',
+ q2:'What can I borrow?',a2:'Tools, garden gear, household appliances and party supplies. No cars or vehicles.',
+ q3:'What if something breaks?',a3:'You take a photo at pickup and return. If something goes wrong, you sort it out with the owner. Kwitt is a place to meet, not a rental company.',
+ q4:'Who sees my data?',a4:'Other members see your first name and neighbourhood. Only the neighbour you agree a loan with sees your address, and only after acceptance.',
+ q5:'Which languages?',a5:'Dutch, French and English. The app automatically uses the language of your phone.',
+ footer:'Lend. Share. Be quits.',
+ privacyLink:'Privacy statement (NL)',
+ altDiscover:'The neighbourhood in the Kwitt app: neighbours’ things in Anderlecht',altAdd:'Adding an item with a photo',altDetail:'Asking to borrow a drill',altEarn:'Credits received after a loan',
+ ok:'Thank you! You are signed up. We will let you know as soon as your neighbourhood starts.',dup:'This email address is already signed up.',bad:'Please check your first name and email address.',fail:'Signing up didn’t work. Please try again later.',
+ title:'Kwitt · Borrow from your neighbours'
+};
+const NL_EXTRA={videoAll:'Alle video\'s:',vPortrait:'telefoon',vLand:'scherm',ok:'Bedankt! Je bent ingeschreven. We laten je weten zodra jouw wijk start.',dup:'Dit e-mailadres is al ingeschreven.',bad:'Kijk je voornaam en e-mailadres na.',fail:'Inschrijven lukte niet. Probeer het later opnieuw.',title:document.title};
 
 // Nederlandse teksten bewaren zoals ze in de HTML staan.
 const NL={};
@@ -325,28 +368,45 @@ document.querySelectorAll('[data-alt]').forEach(el=>{NL[el.dataset.alt]=el.alt})
 Object.assign(NL,NL_EXTRA);
 let lang='nl';
 
+// Video's: taal volgt de pagina, formaat volgt het scherm (telefoon = verticaal)
+const narrow=window.matchMedia('(max-width:760px)');
+let vLang='nl',vOri=narrow.matches?'iphone':'scherm';
+function loadVideo(){
+  const v=document.getElementById('promo'),s=document.getElementById('promoSrc');
+  const want='media/kwitt_'+vLang+'_'+vOri+'.mp4';
+  document.getElementById('player').className='player'+(vOri==='iphone'?' p':'');
+  if(!s.getAttribute('src').endsWith(want)){s.src=want;v.poster='img/poster_'+vLang+'_'+vOri+'.jpg';v.load()}
+}
+function renderVBtns(){
+  const D=lang==='fr'?FR:lang==='en'?EN:NL,box=document.getElementById('vbtns');box.innerHTML='';
+  ['nl','fr','en'].forEach(l=>['scherm','iphone'].forEach(o=>{
+    const b=document.createElement('button');b.type='button';
+    b.textContent=l.toUpperCase()+' · '+(o==='iphone'?D.vPortrait:D.vLand);
+    b.setAttribute('aria-pressed',String(l===vLang&&o===vOri));
+    b.addEventListener('click',()=>{vLang=l;vOri=o;loadVideo();renderVBtns();const v=document.getElementById('promo');v.play().catch(()=>{})});
+    box.appendChild(b);
+  }));
+}
 function setLang(l){
-  lang=l;const D=l==='fr'?FR:NL;
+  lang=l;const D=l==='fr'?FR:l==='en'?EN:NL;
   document.documentElement.lang=l;document.title=D.title;
   document.querySelectorAll('[data-t]').forEach(el=>{if(D[el.dataset.t]!=null)el.innerHTML=D[el.dataset.t]});
   document.querySelectorAll('[data-alt]').forEach(el=>{if(D[el.dataset.alt])el.alt=D[el.dataset.alt]});
-  document.querySelectorAll('img[data-src-nl]').forEach(img=>{img.src=img.dataset['src'+(l==='fr'?'Fr':'Nl')]});
+  document.querySelectorAll('img[data-src-nl]').forEach(img=>{img.src=img.dataset['src'+l[0].toUpperCase()+l[1]]||img.src});
   document.querySelectorAll('.lang button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.lang===l)));
-  const v=document.getElementById('promo'),s=document.getElementById('promoSrc');
-  const want='media/kwitt_'+l+'.mp4';
-  if(!s.getAttribute('src').endsWith(want)){s.src=want;v.poster='img/poster_'+l+'.jpg';v.load()}
+  vLang=l;loadVideo();renderVBtns();
   try{localStorage.setItem('kwitt.lang',l)}catch(e){}
 }
 document.querySelectorAll('.lang button').forEach(b=>b.addEventListener('click',()=>setLang(b.dataset.lang)));
 let start='nl';
-try{start=localStorage.getItem('kwitt.lang')||((navigator.language||'').toLowerCase().startsWith('fr')?'fr':'nl')}catch(e){}
-if(start==='fr')setLang('fr');
+try{const nav=(navigator.language||'').toLowerCase();start=localStorage.getItem('kwitt.lang')||(nav.startsWith('fr')?'fr':nav.startsWith('en')?'en':'nl')}catch(e){}
+setLang(start);
 
 // Inschrijven voor de testgroep
 const form=document.getElementById('joinForm'),msg=document.getElementById('formMsg');
 form.addEventListener('submit',async e=>{
   e.preventDefault();
-  const D=lang==='fr'?FR:NL;
+  const D=lang==='fr'?FR:lang==='en'?EN:NL;
   const name=document.getElementById('fname').value.trim(),email=document.getElementById('femail').value.trim(),hood=document.getElementById('fhood').value;
   const show=(k,cls)=>{msg.className='msg '+cls;msg.textContent=D[k]};
   if(!name||!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){show('bad','err');return}
