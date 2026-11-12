@@ -336,7 +336,7 @@ footer .sprout{display:inline-block;width:16px;height:16px;vertical-align:-3px;m
         </video>
       </div>
       <div class="vlist">
-        <span class="muted small" data-t="videoAll">Alle video's:</span>
+        <span class="muted small" data-t="videoAll">Taal van de video:</span>
         <div class="vbtns" id="vbtns"></div>
       </div>
     </div>
@@ -416,7 +416,7 @@ const FR={
  s2t:'Empruntez dans le quartier',s2p:'Cherchez ce dont vous avez besoin et demandez à l’emprunter. Vous payez en crédits.',
  s3t:'Prêtez et gagnez des crédits',s3p:'Un voisin vous emprunte quelque chose ? Au retour, vous recevez les crédits.',
  t1:'Vous ne voyez l’adresse qu’une fois le prêt accepté.',t2:'Une photo au retrait et au retour : pas de discussion sur l’état.',t3:'Appareil dangereux ? Le propriétaire explique comment il fonctionne.',
- videoTitle:'Kwitt en 25 secondes',videoP:'Pourquoi chacun devrait-il tout acheter ? Découvrez comment emprunter à vos voisins, et comment on a ainsi besoin de moins d’objets neufs.',videoAll:'Toutes les vidéos :',vPortrait:'téléphone',vLand:'écran',
+ videoTitle:'Kwitt en 25 secondes',videoP:'Pourquoi chacun devrait-il tout acheter ? Découvrez comment emprunter à vos voisins, et comment on a ainsi besoin de moins d’objets neufs.',videoAll:'Langue de la vidéo :',vPortrait:'téléphone',vLand:'écran',
  joinTitle:'Rejoignez le test à Anderlecht',joinP:'Nous commençons avec des voisins qui se connaissent, rue par rue. Inscrivez-vous et vous recevrez une invitation dès que votre quartier démarre. Gratuit et sans engagement.',
  heroChip:'+2 crédits',street:'Une perceuse pour toute la rue.',
  swipe:'Glissez pour l’étape suivante →',
@@ -450,7 +450,7 @@ const EN={
  s2t:'Borrow in your neighbourhood',s2p:'Search for what you need and ask to borrow it. You pay in credits.',
  s3t:'Lend and earn credits',s3p:'A neighbour borrows something from you? When it comes back, you get the credits.',
  t1:'You only see the address once the loan is accepted.',t2:'A photo at pickup and return: no arguments about the condition.',t3:'Risky device? The owner explains how it works.',
- videoTitle:'Kwitt in 25 seconds',videoP:'Why should everyone buy everything? See how borrowing from your neighbours works, and how it means we need fewer new things.',videoAll:'All videos:',vPortrait:'phone',vLand:'screen',
+ videoTitle:'Kwitt in 25 seconds',videoP:'Why should everyone buy everything? See how borrowing from your neighbours works, and how it means we need fewer new things.',videoAll:'Video language:',vPortrait:'phone',vLand:'screen',
  joinTitle:'Join the test in Anderlecht',joinP:'We start with neighbours who know each other, street by street. Sign up and you will get an invitation as soon as your neighbourhood starts. Free, no strings attached.',
  heroChip:'+2 credits',street:'One drill for the whole street.',
  swipe:'Swipe for the next step →',
@@ -469,7 +469,7 @@ const EN={
  ok:'Thank you! You are signed up. We will let you know as soon as your neighbourhood starts.',dup:'This email address is already signed up.',bad:'Please check your first name and email address.',fail:'Signing up didn’t work. Please try again later.',
  title:'Kwitt · Borrow from your neighbours'
 };
-const NL_EXTRA={heroChip:'+2 credits',fBackHood:'Ik woon in Anderlecht',badCity:'Vul je gemeente in.',videoAll:'Alle video\'s:',vPortrait:'telefoon',vLand:'scherm',ok:'Bedankt! Je bent ingeschreven. We laten je weten zodra jouw wijk start.',dup:'Dit e-mailadres is al ingeschreven.',bad:'Kijk je voornaam en e-mailadres na.',fail:'Inschrijven lukte niet. Probeer het later opnieuw.',title:document.title};
+const NL_EXTRA={heroChip:'+2 credits',fBackHood:'Ik woon in Anderlecht',badCity:'Vul je gemeente in.',videoAll:'Taal van de video:',vPortrait:'telefoon',vLand:'scherm',ok:'Bedankt! Je bent ingeschreven. We laten je weten zodra jouw wijk start.',dup:'Dit e-mailadres is al ingeschreven.',bad:'Kijk je voornaam en e-mailadres na.',fail:'Inschrijven lukte niet. Probeer het later opnieuw.',title:document.title};
 
 // Nederlandse teksten bewaren zoals ze in de HTML staan.
 const NL={};
@@ -478,25 +478,26 @@ document.querySelectorAll('[data-alt]').forEach(el=>{NL[el.dataset.alt]=el.alt})
 Object.assign(NL,NL_EXTRA);
 let lang='nl';
 
-// Video's: taal volgt de pagina, formaat volgt het scherm (telefoon = verticaal)
-const narrow=window.matchMedia('(max-width:760px)');
-let vLang='nl',vOri=narrow.matches?'iphone':'scherm';
+// Video's: de site kiest zelf het formaat (telefoon = verticaal, computer/tablet = horizontaal);
+// de bezoeker kiest alleen de taal.
+const phoneQ=window.matchMedia('(max-width:760px), (pointer:coarse) and (max-width:900px) and (orientation:portrait)');
+let vLang='nl',vOri=phoneQ.matches?'iphone':'scherm';
 function loadVideo(){
   const v=document.getElementById('promo'),s=document.getElementById('promoSrc');
   const want='media/kwitt_'+vLang+'_'+vOri+'.mp4';
-  document.getElementById('player').className='player'+(vOri==='iphone'?' p':'');
-  if(!s.getAttribute('src').endsWith(want)){s.src=want;v.poster='img/poster_'+vLang+'_'+vOri+'.jpg';v.load()}
+  document.getElementById('player').className='player'+(vOri==='iphone'?' p':'')+(document.getElementById('player').classList.contains('in')?' in':'')+' reveal';
+  if(!s.getAttribute('src').endsWith(want)){const playing=!v.paused;s.src=want;v.poster='img/poster_'+vLang+'_'+vOri+'.jpg';v.load();if(playing)v.play().catch(()=>{})}
 }
 function renderVBtns(){
-  const D=lang==='fr'?FR:lang==='en'?EN:NL,box=document.getElementById('vbtns');box.innerHTML='';
-  ['nl','fr','en'].forEach(l=>['scherm','iphone'].forEach(o=>{
-    const b=document.createElement('button');b.type='button';
-    b.textContent=l.toUpperCase()+' · '+(o==='iphone'?D.vPortrait:D.vLand);
-    b.setAttribute('aria-pressed',String(l===vLang&&o===vOri));
-    b.addEventListener('click',()=>{vLang=l;vOri=o;loadVideo();renderVBtns();const v=document.getElementById('promo');v.play().catch(()=>{})});
+  const box=document.getElementById('vbtns');box.innerHTML='';
+  [['nl','Nederlands'],['fr','Français'],['en','English']].forEach(([l,name])=>{
+    const b=document.createElement('button');b.type='button';b.textContent=name;b.lang=l;
+    b.setAttribute('aria-pressed',String(l===vLang));
+    b.addEventListener('click',()=>{vLang=l;loadVideo();renderVBtns();document.getElementById('promo').play().catch(()=>{})});
     box.appendChild(b);
-  }));
+  });
 }
+phoneQ.addEventListener('change',e=>{vOri=e.matches?'iphone':'scherm';loadVideo()});
 function setLang(l){
   lang=l;const D=l==='fr'?FR:l==='en'?EN:NL;
   document.documentElement.lang=l;document.title=D.title;
