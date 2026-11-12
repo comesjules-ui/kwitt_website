@@ -144,6 +144,29 @@ footer .sprout{display:inline-block;width:16px;height:16px;vertical-align:-3px;m
 .ticon{flex:none;width:42px;height:42px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;color:var(--green);box-shadow:0 4px 12px rgba(20,90,50,.10)}
 .ticon .ph{width:24px;height:24px}
 .trust div{align-items:center}
+
+@media (max-width:760px){
+  body{font-size:17px}
+  input,select{font-size:16px}
+  .hero{padding:28px 0 24px}
+  .hero .phone{max-width:230px;border-width:7px;border-radius:34px}
+  .hero .ctas .btn{width:100%}
+  .steps{display:flex;grid-template-columns:none;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;margin:24px -20px 0;padding:4px 20px 14px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+  .steps::-webkit-scrollbar{display:none}
+  .step{flex:0 0 78%;scroll-snap-align:center;background:#fff;border:1px solid var(--line);border-radius:22px;padding:18px}
+  .step .phone{max-width:170px;border-width:6px;border-radius:26px;margin:0}
+  .swipehint.swipehint{display:block}
+  .player.p{max-width:270px}
+  summary{font-size:17px;padding:6px 0;min-height:44px;display:flex;align-items:center}
+  footer a{display:inline-block;padding:10px 0}
+  .vbtns button{min-height:44px}
+  .linkbtn{min-height:44px}
+  .sticky-cta.sticky-cta{display:flex}
+}
+.swipehint{display:none;font-size:14px;color:var(--muted);margin-top:4px}
+.sticky-cta{display:none;position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom));z-index:40;justify-content:center;transition:transform .3s,opacity .3s}
+.sticky-cta .btn{width:100%;box-shadow:0 10px 30px rgba(0,0,0,.18)}
+.sticky-cta.off{transform:translateY(140%);opacity:0;pointer-events:none}
 </style>
 </head>
 <body>
@@ -209,6 +232,7 @@ footer .sprout{display:inline-block;width:16px;height:16px;vertical-align:-3px;m
   <section aria-labelledby="how">
     <div class="wrap">
       <h2 id="how" data-t="howTitle">Zo werkt het</h2>
+      <p class="swipehint" data-t="swipe">Veeg opzij voor de volgende stap →</p>
       <div class="steps">
         <div class="step">
           <div class="num">1</div>
@@ -298,6 +322,7 @@ footer .sprout{display:inline-block;width:16px;height:16px;vertical-align:-3px;m
   </section>
 </main>
 
+<div class="sticky-cta off" id="stickyCta"><a class="btn orange" href="#join" data-t="navCta">Doe mee</a></div>
 <footer>
   <div class="wrap">
     <span><svg class="sprout" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21v-9"/><path d="M12 12C12 8 9 5 4 5c0 4 3 7 8 7z"/><path d="M12 14c0-4 3-7 8-7 0 4-3 7-8 7z"/></svg>© 2026 Kwitt · Anderlecht</span>
@@ -330,6 +355,7 @@ const FR={
  t1:'Vous ne voyez l’adresse qu’une fois le prêt accepté.',t2:'Une photo au retrait et au retour : pas de discussion sur l’état.',t3:'Appareil dangereux ? Le propriétaire explique comment il fonctionne.',
  videoTitle:'Kwitt en 30 secondes',videoP:'Pourquoi chacun devrait-il tout acheter ? Découvrez comment emprunter à vos voisins, et comment on a ainsi besoin de moins d’objets neufs.',videoAll:'Toutes les vidéos :',vPortrait:'téléphone',vLand:'écran',
  joinTitle:'Rejoignez le test à Anderlecht',joinP:'Nous commençons avec des voisins qui se connaissent, rue par rue. Inscrivez-vous et vous recevrez une invitation dès que votre quartier démarre. Gratuit et sans engagement.',
+ swipe:'Glissez pour l’étape suivante →',
  fOtherCity:'J’habite dans une autre commune',fBackHood:'J’habite à Anderlecht',fCity:'Commune',fCityNote:'Nous commençons à Anderlecht. Inscrivez-vous quand même : dès qu’il y a assez de voisins dans votre commune, nous y ouvrons Kwitt aussi.',badCity:'Indiquez votre commune.',
  fName:'Prénom',fEmail:'Adresse e-mail',fHood:'Quartier',fOther:'Autre quartier',fSubmit:'Je m’inscris',
  fPrivacy:'Nous utilisons votre adresse e-mail uniquement pour vous inviter au test. Vous pouvez toujours demander de l’effacer.',
@@ -362,6 +388,7 @@ const EN={
  t1:'You only see the address once the loan is accepted.',t2:'A photo at pickup and return: no arguments about the condition.',t3:'Risky device? The owner explains how it works.',
  videoTitle:'Kwitt in 30 seconds',videoP:'Why should everyone buy everything? See how borrowing from your neighbours works, and how it means we need fewer new things.',videoAll:'All videos:',vPortrait:'phone',vLand:'screen',
  joinTitle:'Join the test in Anderlecht',joinP:'We start with neighbours who know each other, street by street. Sign up and you will get an invitation as soon as your neighbourhood starts. Free, no strings attached.',
+ swipe:'Swipe for the next step →',
  fOtherCity:'I live in another municipality',fBackHood:'I live in Anderlecht',fCity:'Municipality',fCityNote:'We are starting in Anderlecht. Sign up anyway: as soon as there are enough neighbours in your municipality, we will open Kwitt there too.',badCity:'Please enter your municipality.',
  fName:'First name',fEmail:'Email address',fHood:'Neighbourhood',fOther:'Other neighbourhood',fSubmit:'Sign me up',
  fPrivacy:'We only use your email address to invite you to the test. You can always ask us to delete it.',
@@ -419,6 +446,12 @@ document.querySelectorAll('.lang button').forEach(b=>b.addEventListener('click',
 let start='nl';
 try{const nav=(navigator.language||'').toLowerCase();start=localStorage.getItem('kwitt.lang')||(nav.startsWith('fr')?'fr':nav.startsWith('en')?'en':'nl')}catch(e){}
 setLang(start);
+
+// Telefoon: vaste knop onderaan, verborgen bij de hero en het formulier
+(function(){const cta=document.getElementById('stickyCta'),hero=document.querySelector('.hero'),join=document.getElementById('join');
+ const vis={hero:true,join:false};const upd=()=>cta.classList.toggle('off',vis.hero||vis.join);
+ const io=new IntersectionObserver(es=>{es.forEach(e=>{vis[e.target===hero?'hero':'join']=e.isIntersecting});upd()},{threshold:0});
+ io.observe(hero);io.observe(join);})();
 
 // Andere gemeente: wijkkeuze verbergen, gemeente vragen
 const cityToggle=document.getElementById('cityToggle'),cityBox=document.getElementById('cityBox'),hoodLabel=document.querySelector('label[for=fhood]');
